@@ -6,10 +6,11 @@ class Pokemon{
     this.hunger = hunger;
     this.shit = shit;
     this.depression = depression;
-    this.run()
+    this.go();
+    
     
 }
-run() {
+go() {
     setInterval(() => {
       this.health -= 1;
       this.hunger -= 3;
@@ -17,8 +18,11 @@ run() {
       this.depression -= 1;
       
       
-    }, 1000)
-  }
+    }, 3000)
+    
+  };
+
+
 
 };
 
@@ -28,8 +32,8 @@ class Pikachu extends Pokemon{
     super (name,pic,health,hunger,shit,depression);
     this.name="Pikachu";
     this.pic= 'src = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/134.png"';
-    this.health = 110;
-    this.hunger = 130;
+    this.health = 100;
+    this.hunger = 100;
     this.shit = 150;
     this.depression = 170;
     } 
@@ -41,7 +45,7 @@ class Sloupock extends Pokemon{
     this.name="Sloupock";
     this.pic='src = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/022.png"';
     this.health = 90;
-    this.hunger = 70;
+    this.hunger = 100;
     this.shit = 110;
     this.depression = 110;
     } 
@@ -53,7 +57,7 @@ class Sqirtle extends Pokemon{
     this.name="Sqirtle";
     this.pic='src = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/008.png"';
     this.health = 910;
-    this.hunger = 700;
+    this.hunger = 100;
     this.shit = 130;
     this.depression = 1110;
     } 
@@ -66,7 +70,13 @@ const po = new Pokemons[Math.ceil(Math.random()*Pokemons.length)-1];
 let card = document.createElement('div');
 let Poke = document.createElement('p');
 let hp = document.createElement('p');
-let ava = document.createElement('div')
+let ava = document.createElement('div');
+
+
+
+
+
+
 card.className = "card";
 document.body.append(card);
 
@@ -100,18 +110,28 @@ let kakcrat = `Shit: ${po.shit}`;
 card.appendChild(crat);
 crat.innerHTML = kakcrat;
 
+let buttonHu = document.createElement('button');
+card.appendChild(buttonHu);
+let kormit = "Кормить";
+buttonHu.innerHTML=kormit;
+buttonHu.id = 'korm';
 
 
 
 
 
+let incKorm = document.getElementById('korm');
+  
+incKorm.addEventListener('click', function(){
+   po.hunger=100;
+  });
 
 console.log(po.health);
 setInterval(() => {
     deadinside.innerHTML =` Dead inside: ${po.depression}`;
     crat.innerHTML =`Shit: ${po.shit}`;
     hp.innerHTML=`Health: ${po.health}`;
-    golod.innerHTML=`Hunger : ${po.hunger}`;
+    golod.innerHTML=`Hunger: ${po.hunger}`;
     console.log(po.health);
   }, 1000)
 
